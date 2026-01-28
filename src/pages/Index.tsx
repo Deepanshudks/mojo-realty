@@ -1,6 +1,13 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Building2, Users, Award, HandshakeIcon, ChevronRight } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Users,
+  Award,
+  HandshakeIcon,
+  ChevronRight,
+} from "lucide-react";
 import heroImage from "@/assets/hero-building.jpg";
 import luxuryInterior from "@/assets/luxury-interior.jpg";
 import PropertyCard from "@/components/PropertyCard";
@@ -17,19 +24,23 @@ const stats = [
 const services = [
   {
     title: "Property Sales",
-    description: "Exclusive access to premium luxury properties in prime locations across Hyderabad.",
+    description:
+      "Exclusive access to premium luxury properties in prime locations across Hyderabad.",
   },
   {
     title: "Investment Advisory",
-    description: "Expert guidance on real estate investments with high ROI potential.",
+    description:
+      "Expert guidance on real estate investments with high ROI potential.",
   },
   {
     title: "Property Consultation",
-    description: "Personalized consultation to find your dream home that matches your lifestyle.",
+    description:
+      "Personalized consultation to find your dream home that matches your lifestyle.",
   },
   {
     title: "Legal Assistance",
-    description: "Complete legal support for seamless property transactions and documentation.",
+    description:
+      "Complete legal support for seamless property transactions and documentation.",
   },
 ];
 
@@ -59,7 +70,7 @@ const Index = () => {
         </motion.div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-6 text-center">
+        <div className="relative z-10 top-20 container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -266,15 +277,16 @@ const Index = () => {
               />
               <div className="mt-6 space-y-6">
                 <p className="text-muted-foreground leading-relaxed">
-                  At MOJO REALTY, we specialize in connecting discerning buyers with 
-                  the most prestigious properties in Hyderabad. With over a decade of 
-                  experience, we've built a reputation for excellence, transparency, 
-                  and unparalleled client service.
+                  At MOJO REALTY, we specialize in connecting discerning buyers
+                  with the most prestigious properties in Hyderabad. With over a
+                  decade of experience, we've built a reputation for excellence,
+                  transparency, and unparalleled client service.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Our portfolio includes exclusive partnerships with renowned developers 
-                  like Brigade, Godrej, and MSN Realty, ensuring our clients access to 
-                  the finest residential offerings in the market.
+                  Our portfolio includes exclusive partnerships with renowned
+                  developers like Brigade, Godrej, and MSN Realty, ensuring our
+                  clients access to the finest residential offerings in the
+                  market.
                 </p>
               </div>
               <Link to="/about">
@@ -376,8 +388,8 @@ const Index = () => {
               transition={{ delay: 0.2 }}
               className="text-primary-foreground/80 text-lg mb-10"
             >
-              Let our experts guide you to the perfect luxury property. 
-              Schedule a consultation today.
+              Let our experts guide you to the perfect luxury property. Schedule
+              a consultation today.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
