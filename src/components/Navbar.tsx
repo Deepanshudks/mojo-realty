@@ -42,10 +42,9 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl md:text-3xl font-display font-bold tracking-wider"
+            className="text-2xl md:text-3xl flex items-center font-display font-bold tracking-wider"
           >
-            <span className="text-gold">MOJO</span>
-            <span className="text-foreground"> REALTY</span>
+            <img className="w-20 h-20" src="favicon.png" alt="mojo Realty" />
           </motion.div>
         </Link>
 
