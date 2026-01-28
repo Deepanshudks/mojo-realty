@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Instagram,
+  Facebook,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,8 +27,8 @@ const Footer = () => {
               </h2>
             </Link>
             <p className="text-muted-foreground leading-relaxed">
-              Your trusted partner in luxury real estate. Specializing in premium 
-              apartments and residences in Hyderabad.
+              Your trusted partner in luxury real estate. Specializing in
+              premium apartments and residences in Hyderabad.
             </p>
             <div className="flex gap-4">
               {[Instagram, Facebook, Linkedin, Twitter].map((Icon, index) => (
@@ -39,24 +47,34 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-display font-semibold mb-6 text-gold">Quick Links</h3>
+            <h3 className="text-lg font-display font-semibold mb-6 text-gold">
+              Quick Links
+            </h3>
             <ul className="space-y-3">
-              {["Home", "About Us", "Properties", "Services", "Contact"].map((item) => (
-                <li key={item}>
-                  <Link
-                    to={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-").replace(" us", "")}`}
-                    className="text-muted-foreground hover:text-gold transition-colors duration-300"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              {["Home", "About Us", "Properties", "Services", "Contact"].map(
+                (item) => (
+                  <li key={item}>
+                    <Link
+                      to={
+                        item === "Home"
+                          ? "/"
+                          : `/${item.toLowerCase().replace(" ", "-").replace(" us", "")}`
+                      }
+                      className="text-muted-foreground hover:text-gold transition-colors duration-300"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-display font-semibold mb-6 text-gold">Our Services</h3>
+            <h3 className="text-lg font-display font-semibold mb-6 text-gold">
+              Our Services
+            </h3>
             <ul className="space-y-3">
               {[
                 "Property Sales",
@@ -76,13 +94,22 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-display font-semibold mb-6 text-gold">Contact Us</h3>
+            <h3 className="text-lg font-display font-semibold mb-6 text-gold">
+              Contact Us
+            </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={20} className="text-gold mt-1 flex-shrink-0" />
                 <span className="text-muted-foreground">
-                  Hitech City, Madhapur<br />
-                  Hyderabad, Telangana 500081
+                  9TH FLOOR, CABIN 101, ALT-F-COWORKING,
+                  <br />
+                  KAPIL KAVURI HUB, NO.144, Nanakramguda Main Road,
+                  <br />
+                  SURVEY NO 37, Financial District,
+                  <br />
+                  Hyderabad, Rangareddy,
+                  <br />
+                  Telangana, 500032
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -116,8 +143,12 @@ const Footer = () => {
               © {currentYear} MOJO REALTY. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-muted-foreground">
-              <span className="hover:text-gold cursor-pointer transition-colors">Privacy Policy</span>
-              <span className="hover:text-gold cursor-pointer transition-colors">Terms of Service</span>
+              <span className="hover:text-gold cursor-pointer transition-colors">
+                Privacy Policy
+              </span>
+              <span className="hover:text-gold cursor-pointer transition-colors">
+                Terms of Service
+              </span>
             </div>
           </div>
         </div>

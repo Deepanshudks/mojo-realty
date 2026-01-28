@@ -8,7 +8,14 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    lines: ["Hitech City, Madhapur", "Hyderabad, Telangana 500081"],
+    lines: [
+      "9th Floor, Cabin 101",
+      "ALT-F Coworking, Kapil Kavuri Hub",
+      "No. 144, Nanakramguda Main Road",
+      "Survey No. 37, Financial District",
+      "Hyderabad, Rangareddy",
+      "Telangana 500032",
+    ],
   },
   {
     icon: Phone,
@@ -40,7 +47,9 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -61,7 +70,13 @@ const Contact = () => {
 
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: "", email: "", phone: "", interest: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        interest: "",
+        message: "",
+      });
     }, 3000);
   };
 
@@ -95,7 +110,9 @@ const Contact = () => {
                 <div className="w-12 h-12 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
                   <info.icon className="text-primary-foreground" size={24} />
                 </div>
-                <h3 className="font-display font-semibold mb-3">{info.title}</h3>
+                <h3 className="font-display font-semibold mb-3">
+                  {info.title}
+                </h3>
                 {info.lines.map((line, i) => (
                   <p key={i} className="text-muted-foreground text-sm">
                     {line}
@@ -117,15 +134,20 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-3xl font-bold mb-2">Send Us a Message</h2>
+              <h2 className="font-display text-3xl font-bold mb-2">
+                Send Us a Message
+              </h2>
               <p className="text-muted-foreground mb-8">
-                Fill out the form below and our team will get back to you shortly.
+                Fill out the form below and our team will get back to you
+                shortly.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Full Name *</label>
+                    <label className="block text-sm font-medium mb-2">
+                      Full Name *
+                    </label>
                     <input
                       type="text"
                       name="name"
@@ -137,7 +159,9 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Email *</label>
+                    <label className="block text-sm font-medium mb-2">
+                      Email *
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -152,7 +176,9 @@ const Contact = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Phone *</label>
+                    <label className="block text-sm font-medium mb-2">
+                      Phone *
+                    </label>
                     <input
                       type="tel"
                       name="phone"
@@ -164,7 +190,9 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">I'm Interested In</label>
+                    <label className="block text-sm font-medium mb-2">
+                      I'm Interested In
+                    </label>
                     <select
                       name="interest"
                       value={formData.interest}
@@ -181,7 +209,9 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
+                  <label className="block text-sm font-medium mb-2">
+                    Message
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -229,7 +259,7 @@ const Contact = () => {
             >
               <div className="h-full min-h-[500px] rounded-lg overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30452.47395632697!2d78.35826584999999!3d17.4474497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93dc8c5d69df%3A0x19688beb557fa0ee!2sHITEC%20City%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1706444800000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.4391447251264!2d78.3454948749355!3d17.42156298347151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb935148bbb97b%3A0xca457ec883d6b3cd!2salt.f%20coworking%20%7C%20Coworking%20Space%20In%20Financial%20District%20Hyderabad!5e1!3m2!1sen!2sin!4v1769619613059!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: "grayscale(1) invert(0.9)" }}
@@ -239,7 +269,7 @@ const Contact = () => {
                   className="min-h-[500px]"
                 />
               </div>
-              
+
               {/* Floating Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -248,9 +278,19 @@ const Contact = () => {
                 transition={{ delay: 0.3 }}
                 className="absolute bottom-8 left-8 right-8 p-6 glass rounded-lg"
               >
-                <h4 className="font-display font-semibold mb-2">MOJO REALTY Office</h4>
-                <p className="text-muted-foreground text-sm">
-                  Hitech City, Madhapur, Hyderabad, Telangana 500081
+                <h4 className="font-display font-semibold mb-2">
+                  MOJO REALTY Office
+                </h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  9th Floor, Cabin 101, ALT-F Coworking
+                  <br />
+                  Kapil Kavuri Hub, No. 144
+                  <br />
+                  Nanakramguda Main Road
+                  <br />
+                  Survey No. 37, Financial District
+                  <br />
+                  Hyderabad, Rangareddy, Telangana 500032
                 </p>
                 <a
                   href="https://maps.google.com"
@@ -285,7 +325,8 @@ const Contact = () => {
               transition={{ delay: 0.1 }}
               className="text-muted-foreground mb-10"
             >
-              Our team is available to answer your questions and help you find the perfect property.
+              Our team is available to answer your questions and help you find
+              the perfect property.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
