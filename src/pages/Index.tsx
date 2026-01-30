@@ -7,6 +7,8 @@ import {
   Award,
   HandshakeIcon,
   ChevronRight,
+  TrendingUp,
+  Scale,
 } from "lucide-react";
 import heroImage from "@/assets/hero-building.jpg";
 import luxuryInterior from "@/assets/luxury-interior.jpg";
@@ -23,21 +25,25 @@ const stats = [
 
 const services = [
   {
+    icon: Building2,
     title: "Property Sales",
     description:
       "Exclusive access to premium luxury properties in prime locations across Hyderabad.",
   },
   {
+    icon: TrendingUp,
     title: "Investment Advisory",
     description:
       "Expert guidance on real estate investments with high ROI potential.",
   },
   {
+    icon: Users,
     title: "Property Consultation",
     description:
       "Personalized consultation to find your dream home that matches your lifestyle.",
   },
   {
+    icon: Scale,
     title: "Legal Assistance",
     description:
       "Complete legal support for seamless property transactions and documentation.",
@@ -54,9 +60,7 @@ const Index = () => {
 
   return (
     <div className="overflow-hidden">
-      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
         <motion.div
           style={{ scale: heroScale, opacity: heroOpacity }}
           className="absolute inset-0"
@@ -66,10 +70,9 @@ const Index = () => {
             alt="Luxury Real Estate"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40   to-background" />
         </motion.div>
 
-        {/* Content */}
         <div className="relative z-10 top-20 container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -129,7 +132,6 @@ const Index = () => {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -146,8 +148,7 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 border-b border-border">
+      <section className="py-20  border-b border-border">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -172,7 +173,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Properties */}
       <section className="py-24">
         <div className="container mx-auto px-6">
           <SectionTitle
@@ -229,11 +229,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Preview */}
       <section className="py-24 bg-charcoal-light">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -248,7 +246,6 @@ const Index = () => {
                   className="w-full h-[500px] object-cover"
                 />
               </div>
-              {/* Floating Card */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -263,7 +260,6 @@ const Index = () => {
               </motion.div>
             </motion.div>
 
-            {/* Content */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -304,7 +300,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Preview */}
       <section className="py-24">
         <div className="container mx-auto px-6">
           <SectionTitle
@@ -325,7 +320,7 @@ const Index = () => {
                 className="p-8 glass rounded-lg group cursor-pointer"
               >
                 <div className="w-12 h-12 bg-gradient-gold rounded-lg flex items-center justify-center mb-6">
-                  <ChevronRight className="text-primary-foreground" />
+                  <service.icon className="text-primary-foreground" size={22} />
                 </div>
                 <h3 className="text-xl font-display font-semibold text-foreground mb-3 group-hover:text-gold transition-colors">
                   {service.title}
@@ -357,7 +352,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-24 bg-gradient-gold relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_transparent_0%,_black_100%)]" />

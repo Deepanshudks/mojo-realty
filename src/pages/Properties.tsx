@@ -5,7 +5,12 @@ import PropertyCard from "@/components/PropertyCard";
 import SectionTitle from "@/components/SectionTitle";
 import { properties, Property } from "@/data/properties";
 
-const statusFilters = ["All", "Ready to Move", "Under Construction", "Pre-Launch"];
+const statusFilters = [
+  "All",
+  "Ready to Move",
+  "Under Construction",
+  "Pre-Launch",
+];
 const bhkFilters = ["All", "3 BHK", "4 BHK", "5 BHK"];
 
 const Properties = () => {
@@ -24,14 +29,14 @@ const Properties = () => {
       selectedStatus === "All" || property.status === selectedStatus;
 
     const matchesBhk =
-      selectedBhk === "All" || property.beds.includes(selectedBhk.replace(" BHK", ""));
+      selectedBhk === "All" ||
+      property.beds.includes(selectedBhk.replace(" BHK", ""));
 
     return matchesSearch && matchesStatus && matchesBhk;
   });
 
   return (
     <div className="pt-24">
-      {/* Hero */}
       <section className="py-16">
         <div className="container mx-auto px-6">
           <SectionTitle
@@ -42,13 +47,14 @@ const Properties = () => {
         </div>
       </section>
 
-      {/* Filters */}
       <section className="py-8 border-y border-border">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-            {/* Search */}
             <div className="relative w-full lg:w-96">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
+              <Search
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+                size={20}
+              />
               <input
                 type="text"
                 placeholder="Search by name, location, developer..."
@@ -58,9 +64,7 @@ const Properties = () => {
               />
             </div>
 
-            {/* Desktop Filters */}
             <div className="hidden lg:flex items-center gap-4">
-              {/* Status Filter */}
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">Status:</span>
                 <div className="flex gap-2">
@@ -80,7 +84,6 @@ const Properties = () => {
                 </div>
               </div>
 
-              {/* BHK Filter */}
               <div className="flex items-center gap-2 ml-4">
                 <span className="text-sm text-muted-foreground">Type:</span>
                 <div className="flex gap-2">
@@ -101,7 +104,6 @@ const Properties = () => {
               </div>
             </div>
 
-            {/* Mobile Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
               className="lg:hidden flex items-center gap-2 px-4 py-2 border border-border rounded-lg text-foreground"
@@ -111,7 +113,6 @@ const Properties = () => {
             </button>
           </div>
 
-          {/* Mobile Filters Panel */}
           <AnimatePresence>
             {showFilters && (
               <motion.div
@@ -172,19 +173,17 @@ const Properties = () => {
         </div>
       </section>
 
-      {/* Results */}
       <section className="py-16">
         <div className="container mx-auto px-6">
-          {/* Results Count */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-muted-foreground mb-8"
           >
-            Showing {filteredProperties.length} of {properties.length} properties
+            Showing {filteredProperties.length} of {properties.length}{" "}
+            properties
           </motion.p>
 
-          {/* Properties Grid */}
           {filteredProperties.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <AnimatePresence mode="popLayout">

@@ -2,12 +2,16 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "next-themes";
+import { formatPhone, phone } from "@/lib/shared";
 
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Properties", path: "/properties" },
   { name: "Services", path: "/services" },
+  { name: "NRI Services", path: "/nri-services" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -15,6 +19,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,21 +39,25 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass py-3" : "bg-transparent py-6 "
+        scrolled
+          ? "glass py-3 backdrop-blur-lg"
+          : "bg-transparent py-6 text-white"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="text-2xl md:text-3xl flex items-center font-display font-bold tracking-wider"
           >
-            <img className="w-20 h-20" src="favicon.png" alt="mojo Realty" />
+            <img
+              className="w-20 h-20"
+              src={`${theme === "light" ? "darkfavicon.png" : "favicon.png"}`}
+              alt="mojo Realty"
+            />
           </motion.div>
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link, index) => (
             <motion.div
@@ -62,7 +71,9 @@ const Navbar = () => {
                 className={`relative font-medium text-sm tracking-wide uppercase transition-colors duration-300 ${
                   location.pathname === link.path
                     ? "text-gold"
-                    : "text-foreground/80 hover:text-gold"
+                    : scrolled
+                      ? "text-foreground/80 hover:text-gold"
+                      : "text-white/90 hover:text-gold"
                 }`}
               >
                 {link.name}
@@ -78,14 +89,17 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* CTA Button */}
         <div className="hidden lg:flex items-center gap-4">
           <a
-            href="tel:+919876543210"
-            className="flex items-center gap-2 text-sm text-foreground/80 hover:text-gold transition-colors"
+            href={`tel:${phone ?? ""}`}
+            className={`flex items-center gap-2 text-sm transition-colors ${
+              scrolled
+                ? "text-foreground/80 hover:text-gold"
+                : "text-white/90 hover:text-gold"
+            }`}
           >
             <Phone size={16} />
-            <span>+91 987 654 3210</span>
+            <span className="leading">{formatPhone(phone)}</span>
           </a>
           <Link to="/contact">
             <motion.button
@@ -96,18 +110,20 @@ const Navbar = () => {
               Schedule Tour
             </motion.button>
           </Link>
+          <ThemeToggle />
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden text-foreground p-2"
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="flex lg:hidden items-center">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden text-foreground p-2"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

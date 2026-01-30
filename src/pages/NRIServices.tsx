@@ -10,84 +10,13 @@ import {
   Shield,
   Award,
   ArrowRight,
+  Building2,
+  Scale,
+  Handshake,
+  Landmark,
 } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
 import luxuryInterior from "@/assets/luxury-interior.jpg";
-
-const services = [
-  {
-    icon: Home,
-    title: "Property Sales",
-    description:
-      "Access our exclusive portfolio of luxury properties from top developers. We connect you with premium residences that match your lifestyle and aspirations.",
-    features: [
-      "Exclusive listings",
-      "Virtual tours",
-      "Price negotiations",
-      "Documentation support",
-    ],
-  },
-  {
-    icon: TrendingUp,
-    title: "Investment Advisory",
-    description:
-      "Expert guidance on real estate investments with high ROI potential. Our market analysts help you make informed decisions for wealth creation.",
-    features: [
-      "Market analysis",
-      "ROI projections",
-      "Portfolio diversification",
-      "Exit strategies",
-    ],
-  },
-  {
-    icon: MessageSquare,
-    title: "Property Consultation",
-    description:
-      "Personalized consultation to understand your requirements and find the perfect property. Our experts guide you through every step.",
-    features: [
-      "Requirement analysis",
-      "Property matching",
-      "Site visits",
-      "Comparison reports",
-    ],
-  },
-  {
-    icon: FileCheck,
-    title: "Legal Assistance",
-    description:
-      "Complete legal support for seamless property transactions. We ensure all documentation and compliance requirements are met.",
-    features: [
-      "Title verification",
-      "Agreement drafting",
-      "Registration support",
-      "Due diligence",
-    ],
-  },
-  {
-    icon: Banknote,
-    title: "Home Loan Assistance",
-    description:
-      "We partner with leading banks to help you secure the best home loan rates. Quick approvals and minimal paperwork.",
-    features: [
-      "Best rates",
-      "Multiple bank options",
-      "Quick processing",
-      "EMI calculators",
-    ],
-  },
-  {
-    icon: Users,
-    title: "After-Sales Support",
-    description:
-      "Our relationship doesn't end at the sale. We provide continued support for all your post-purchase requirements.",
-    features: [
-      "Possession support",
-      "Interior referrals",
-      "Resale assistance",
-      "Rental management",
-    ],
-  },
-];
 
 const process = [
   {
@@ -121,7 +50,26 @@ const process = [
   },
 ];
 
-const Services = () => {
+const nriSupport = [
+  {
+    icon: Building2,
+    title: "Curated Property Portfolio & Private Virtual Showings",
+  },
+  {
+    icon: Scale,
+    title: "Comprehensive Legal Due Diligence & Documentation",
+  },
+  {
+    icon: Handshake,
+    title: "Strategic Coordination with Developers & Financial Institutions",
+  },
+  {
+    icon: Landmark,
+    title: "Seamless End-to-End Transaction Management",
+  },
+];
+
+const NRIServices = () => {
   return (
     <div className="pt-24">
       <section className="py-20 relative overflow-hidden">
@@ -136,19 +84,23 @@ const Services = () => {
 
         <div className="container mx-auto px-6 relative z-10">
           <SectionTitle
-            subtitle="What We Offer"
-            title="Premium Real Estate Services"
-            description="Comprehensive solutions tailored to make your property journey seamless and rewarding. From search to possession, we're with you every step."
+            title="Your Reliable Real Estate Partner, Anywhere You Are"
+            description="Living overseas and looking to invest in Hyderabad?
+                With Mojo Realty’s NRI Services, enjoy a smooth, transparent, and completely hassle-free journey from property discovery to final possession."
           />
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+          <h2 className="text-center text-3xl md:text-4xl font-display font-bold mb-16">
+            Our NRI Support Includes
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {nriSupport.map((item, index) => (
               <motion.div
-                key={service.title}
+                key={item.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -156,26 +108,17 @@ const Services = () => {
                 whileHover={{ y: -10 }}
                 className="p-8 glass rounded-lg group"
               >
-                <div className="w-14 h-14 bg-gradient-gold rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <service.icon className="text-primary-foreground" size={28} />
+                <div className="flex justify-center mb-6">
+                  <item.icon
+                    size={40}
+                    className="text-primary"
+                    strokeWidth={1.5}
+                  />
                 </div>
+
                 <h3 className="text-xl font-display font-bold mb-4 group-hover:text-gold transition-colors">
-                  {service.title}
+                  {item.title}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-                <ul className="space-y-2">
-                  {service.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-center gap-2 text-sm text-muted-foreground"
-                    >
-                      <div className="w-1.5 h-1.5 bg-gold rounded-full" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
               </motion.div>
             ))}
           </div>
@@ -335,4 +278,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default NRIServices;

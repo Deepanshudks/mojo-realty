@@ -1,6 +1,16 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, Bed, Square, Building2, Calendar, ArrowLeft, Phone, Mail, Check } from "lucide-react";
+import {
+  MapPin,
+  Bed,
+  Square,
+  Building2,
+  Calendar,
+  ArrowLeft,
+  Phone,
+  Mail,
+  Check,
+} from "lucide-react";
 import { getPropertyById } from "@/data/properties";
 
 const PropertyDetail = () => {
@@ -12,8 +22,7 @@ const PropertyDetail = () => {
   }
 
   return (
-    <div className="pt-24">
-      {/* Hero Image */}
+    <div className="pt-28">
       <section className="relative h-[60vh] overflow-hidden">
         <motion.img
           initial={{ scale: 1.1 }}
@@ -25,24 +34,23 @@ const PropertyDetail = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
 
-        {/* Back Button */}
-        <Link
-          to="/properties"
-          className="absolute top-8 left-8 flex items-center gap-2 px-4 py-2 glass rounded-lg text-foreground hover:text-gold transition-colors"
-        >
-          <ArrowLeft size={20} />
-          <span>Back to Properties</span>
-        </Link>
+        <div className="absolute top-4 md:top-8 left-4 md:left-8 right-4 md:right-8 flex justify-between items-start">
+          <Link
+            to="/properties"
+            className="flex items-center gap-2 px-3 md:px-4 py-2 glass rounded-lg text-sm md:text-base text-foreground hover:text-gold transition-colors"
+          >
+            <ArrowLeft size={20} />
+            <span className="hidden sm:inline">Back to Properties</span>
+            <span className="sm:hidden">Back</span>
+          </Link>
 
-        {/* Status Badge */}
-        <div className="absolute top-8 right-8">
           <span
-            className={`px-4 py-2 rounded-lg text-sm font-semibold ${
+            className={`px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-semibold backdrop-blur-md ${
               property.status === "Ready to Move"
                 ? "bg-green-500/20 text-green-400"
                 : property.status === "Under Construction"
-                ? "bg-yellow-500/20 text-yellow-400"
-                : "bg-blue-500/20 text-blue-400"
+                  ? "bg-yellow-500/20 text-yellow-400"
+                  : "bg-blue-500/20 text-blue-400"
             }`}
           >
             {property.status}
@@ -50,13 +58,10 @@ const PropertyDetail = () => {
         </div>
       </section>
 
-      {/* Content */}
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-3 gap-12">
-            {/* Main Content */}
             <div className="lg:col-span-2 space-y-12">
-              {/* Header */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -74,7 +79,6 @@ const PropertyDetail = () => {
                 </div>
               </motion.div>
 
-              {/* Quick Info */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -84,7 +88,11 @@ const PropertyDetail = () => {
                 {[
                   { icon: Bed, label: "Configuration", value: property.beds },
                   { icon: Square, label: "Area", value: property.area },
-                  { icon: Building2, label: "Developer", value: property.developer },
+                  {
+                    icon: Building2,
+                    label: "Developer",
+                    value: property.developer,
+                  },
                   { icon: Calendar, label: "Status", value: property.status },
                 ].map((item) => (
                   <div key={item.label} className="p-4 glass rounded-lg">
@@ -97,23 +105,27 @@ const PropertyDetail = () => {
                 ))}
               </motion.div>
 
-              {/* Description */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <h2 className="text-2xl font-display font-bold mb-4">About This Property</h2>
-                <p className="text-muted-foreground leading-relaxed">{property.description}</p>
+                <h2 className="text-2xl font-display font-bold mb-4">
+                  About This Property
+                </h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  {property.description}
+                </p>
               </motion.div>
 
-              {/* Highlights */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                <h2 className="text-2xl font-display font-bold mb-6">Key Highlights</h2>
+                <h2 className="text-2xl font-display font-bold mb-6">
+                  Key Highlights
+                </h2>
                 <div className="grid md:grid-cols-2 gap-4">
                   {property.highlights.map((highlight, index) => (
                     <div key={index} className="flex items-start gap-3">
@@ -126,13 +138,14 @@ const PropertyDetail = () => {
                 </div>
               </motion.div>
 
-              {/* Amenities */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-                <h2 className="text-2xl font-display font-bold mb-6">Amenities</h2>
+                <h2 className="text-2xl font-display font-bold mb-6">
+                  Amenities
+                </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {property.amenities.map((amenity, index) => (
                     <div
@@ -146,7 +159,6 @@ const PropertyDetail = () => {
               </motion.div>
             </div>
 
-            {/* Sidebar */}
             <div className="lg:col-span-1">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -154,7 +166,6 @@ const PropertyDetail = () => {
                 transition={{ delay: 0.4 }}
                 className="sticky top-32 space-y-6"
               >
-                {/* Price Card */}
                 <div className="p-8 glass rounded-lg">
                   <p className="text-sm text-muted-foreground uppercase tracking-wide mb-2">
                     Starting Price
@@ -165,7 +176,7 @@ const PropertyDetail = () => {
                   <p className="text-sm text-muted-foreground mb-6">
                     @ {property.pricePerSqft}
                   </p>
-                  <div className="space-y-3">
+                  <div className="gap-2 flex flex-col">
                     <Link to="/contact">
                       <motion.button
                         whileHover={{ scale: 1.02 }}
@@ -187,7 +198,6 @@ const PropertyDetail = () => {
                   </div>
                 </div>
 
-                {/* Contact Card */}
                 <div className="p-6 glass rounded-lg">
                   <h4 className="font-semibold mb-4">Contact Our Expert</h4>
                   <div className="space-y-3">

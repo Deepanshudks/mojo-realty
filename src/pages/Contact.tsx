@@ -3,29 +3,29 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
 import { useToast } from "@/hooks/use-toast";
+import {
+  email,
+  formatPhone,
+  officeAddress,
+  phone,
+  secondaryphone,
+} from "@/lib/shared";
 
 const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    lines: [
-      "9th Floor, Cabin 101",
-      "ALT-F Coworking, Kapil Kavuri Hub",
-      "No. 144, Nanakramguda Main Road",
-      "Survey No. 37, Financial District",
-      "Hyderabad, Rangareddy",
-      "Telangana 500032",
-    ],
+    lines: officeAddress,
   },
   {
     icon: Phone,
     title: "Call Us",
-    lines: ["+91 987 654 3210", "+91 876 543 2109"],
+    lines: [formatPhone(phone) ?? "", formatPhone(secondaryphone)],
   },
   {
     icon: Mail,
     title: "Email Us",
-    lines: ["info@mojorealty.com", "sales@mojorealty.com"],
+    lines: [email],
   },
   {
     icon: Clock,
@@ -58,7 +58,6 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     setIsSubmitting(false);
@@ -82,7 +81,6 @@ const Contact = () => {
 
   return (
     <div className="pt-24">
-      {/* Hero */}
       <section className="py-20">
         <div className="container mx-auto px-6">
           <SectionTitle
@@ -93,7 +91,6 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Info Cards */}
       <section className="py-12">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -124,11 +121,9 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form & Map */}
       <section className="py-24">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16">
-            {/* Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -250,7 +245,6 @@ const Contact = () => {
               </form>
             </motion.div>
 
-            {/* Map */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -270,7 +264,6 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Floating Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -282,15 +275,12 @@ const Contact = () => {
                   MOJO REALTY Office
                 </h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  9th Floor, Cabin 101, ALT-F Coworking
-                  <br />
-                  Kapil Kavuri Hub, No. 144
-                  <br />
-                  Nanakramguda Main Road
-                  <br />
-                  Survey No. 37, Financial District
-                  <br />
-                  Hyderabad, Rangareddy, Telangana 500032
+                  {officeAddress.map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
                 </p>
                 <a
                   href="https://maps.google.com"
@@ -306,7 +296,6 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Quick Contact CTA */}
       <section className="py-24 bg-charcoal-light">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
@@ -335,17 +324,17 @@ const Contact = () => {
               transition={{ delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <a href="tel:+919876543210">
+              <a href={`tel:${phone ?? ""}`}>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-gradient-gold text-primary-foreground font-semibold uppercase tracking-wider"
                 >
-                  Call: +91 987 654 3210
+                  {"Call: " + formatPhone(phone)}
                 </motion.button>
               </a>
               <a
-                href="https://wa.me/919876543210"
+                href={`https://wa.me/${phone ?? ""}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

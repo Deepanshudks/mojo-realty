@@ -9,6 +9,7 @@ import {
   Linkedin,
   Twitter,
 } from "lucide-react";
+import { email, formatPhone, officeAddress, phone } from "@/lib/shared";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -92,7 +93,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className="text-lg font-display font-semibold mb-6 text-gold">
               Contact Us
@@ -101,33 +101,30 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={20} className="text-gold mt-1 flex-shrink-0" />
                 <span className="text-muted-foreground">
-                  9TH FLOOR, CABIN 101, ALT-F-COWORKING,
-                  <br />
-                  KAPIL KAVURI HUB, NO.144, Nanakramguda Main Road,
-                  <br />
-                  SURVEY NO 37, Financial District,
-                  <br />
-                  Hyderabad, Rangareddy,
-                  <br />
-                  Telangana, 500032
+                  {officeAddress.map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={20} className="text-gold flex-shrink-0" />
                 <a
-                  href="tel:+919876543210"
+                  href={`tel:${phone ?? ""}`}
                   className="text-muted-foreground hover:text-gold transition-colors"
                 >
-                  +91 987 654 3210
+                  {formatPhone(phone) ?? ""}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={20} className="text-gold flex-shrink-0" />
                 <a
-                  href="mailto:info@mojorealty.com"
+                  href={`mailto:${email}`}
                   className="text-muted-foreground hover:text-gold transition-colors"
                 >
-                  info@mojorealty.com
+                  {email ?? ""}
                 </a>
               </li>
             </ul>
