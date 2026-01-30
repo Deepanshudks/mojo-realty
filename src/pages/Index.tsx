@@ -6,9 +6,8 @@ import {
   Users,
   Award,
   HandshakeIcon,
-  ChevronRight,
   TrendingUp,
-  Scale,
+  Globe,
 } from "lucide-react";
 import heroImage from "@/assets/hero-building.jpg";
 import luxuryInterior from "@/assets/luxury-interior.jpg";
@@ -43,10 +42,10 @@ const services = [
       "Personalized consultation to find your dream home that matches your lifestyle.",
   },
   {
-    icon: Scale,
-    title: "Legal Assistance",
+    icon: Globe,
+    title: "NRI Services",
     description:
-      "Complete legal support for seamless property transactions and documentation.",
+      "Comprehensive, end-to-end assistance tailored for overseas investors.",
   },
 ];
 

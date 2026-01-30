@@ -10,6 +10,7 @@ import {
   Shield,
   Award,
   ArrowRight,
+  Globe,
 } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
 import luxuryInterior from "@/assets/luxury-interior.jpg";
@@ -52,15 +53,15 @@ const services = [
     ],
   },
   {
-    icon: FileCheck,
-    title: "Legal Assistance",
+    icon: Globe,
+    title: "NRI Services",
     description:
-      "Complete legal support for seamless property transactions. We ensure all documentation and compliance requirements are met.",
+      "End-to-end support for overseas investors looking to buy property in India. We manage the entire process remotely with complete transparency.",
     features: [
-      "Title verification",
-      "Agreement drafting",
-      "Registration support",
-      "Due diligence",
+      "Virtual property tours",
+      "POA & documentation support",
+      "Tax & repatriation guidance",
+      "Dedicated NRI relationship manager",
     ],
   },
   {
